@@ -1,15 +1,16 @@
-import axios from './node_modules/axios'
+import axios from 'axios'
 
 const CITY_URL = '/json/city.json';
 
 const axCity = async () => {
 	try {
-	const	r = await axios.get(CITY_URL);
-	console.log(r)
+		const r = await axios.get(CITY_URL);
+		return r.data.cities;
 	}
 	catch(e) {
-		console.log(e)
+		console.log(e);
+		return e;
 	}
 }
 
-export {axCity}
+export { axCity }
