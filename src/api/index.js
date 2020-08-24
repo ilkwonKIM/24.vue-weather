@@ -22,8 +22,11 @@ const axWeather = async (cityId) => {
 	try {
 		const daily = await axios.get(DAILY_URL, { params });
 		const weekly = await axios.get(WEEKLY_URL, { params });
+		//Daily
 		daily.data.icon = iconUrl(daily.data.weather[0].icon, ICON_URL)
 		daily.data.windDir = windDir(daily.data.wind.deg)
+
+		//Weekly
 		
 		return { daily: daily.data, weekly: weekly.data };
 	}//axios는 객체로 params여야지 데이터를 받아온다 data로 했을때는 error남
