@@ -1,6 +1,10 @@
 import axios from 'axios'
 
+const API_KEY = '0a3cf0327ffa6fed3238a04bf2a636c4'
 const CITY_URL = '/json/city.json';
+const DAILY_URL = 'https://api.openweathermap.org/data/2.5/weather'
+const WEEKLY_URL = 'https://api.openweathermap.org/data/2.5/forecast'
+const ICON_URL = 'https://openweahermap.org/img/wn' //10d@2x.png
 
 const axCity = async () => {
 	try {
@@ -12,5 +16,16 @@ const axCity = async () => {
 		return e;
 	}
 }
-
-export { axCity }
+const axWeather = async (cityId) => {
+	const params = { units: 'metric', appid: API_KEY, id: cityId };
+	try {
+		const daily = await axios.get(DAILY_URL, {params});
+		const weekly = await axios.get(WEEKLY_URL, {params});
+		return { daily: daily.data, weekly: weekly.data };
+	} //axios는 객체로 params여야지 데이터를 받아온다 data로 했을때는 error남
+	catch(e) {
+		console.log(e);
+		return e;
+	}
+}
+export { axCity, axWeather }

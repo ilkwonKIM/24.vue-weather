@@ -6,28 +6,37 @@ import Weekly from '../views/Weekly.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/daily',
-    name: 'Daily',
-    component: Daily
-  },
-  {
-    path: '/weekly',
-    name: 'Weekly',
-    component: Weekly
-  }
+const routes = [
+	{
+		path: '/',
+		name: 'Home',
+		component: Home
+	},
+	{
+		path: '/daily',
+		name: 'Daily',
+		component: Daily
+	},
+	{
+		path: '/weekly',
+		name: 'Weekly',
+		component: Weekly
+	},
+	{
+		path: '/test/:id',
+		name: 'test',
+		component: Weekly
+		// this.$route.params.id
+		// this.$route.query.id
+	}
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
+
+
 
 export default router
