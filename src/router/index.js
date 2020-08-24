@@ -39,6 +39,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next)=> {
   to.name != 'Home' && !from.name ? next({path: '/'}) : next();
-});
+}); // Daily에서 새로고침시 Daily에 요청하는 값이 없어 오류가 나는것을 루트로 보내서 오류를 잡음
 
 export default router
