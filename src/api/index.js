@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const API_KEY = '0a3cf0327ffa6fed3238a04bf2a636c4'
+const API_KEY = '0a3cf0327ffa6fed3238a04bf2a636c4' // openwather 사이트에서 로그인하고 API_KEY
 const CITY_URL = '/json/city.json';
-const DAILY_URL = 'https://api.openweathermap.org/data/2.5/weather'
+const DAILY_URL = 'https://api.openweathermap.org/data/2.5/weather' //API창에서 APIDOC에서 주소 복사
 const WEEKLY_URL = 'https://api.openweathermap.org/data/2.5/forecast'
 const ICON_URL = 'https://openweahermap.org/img/wn' //10d@2x.png
 
