@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {windDir, iconUrl} from '../modules/util.js'
 import moment from 'moment'
+import {windDir, iconUrl, location} from '../modules/util.js'
 
 const API_KEY = '0a3cf0327ffa6fed3238a04bf2a636c4' // openwather 사이트에서 로그인하고 API_KEY
 const CITY_URL = '/json/city.json';
@@ -19,8 +19,14 @@ const axCity = async () => {
 	}
 }
 const axWeather = async (cityId) => {
-	const params = { units: 'metric', appid: API_KEY, id: cityId };
+	const params = { units: 'metric', appid: API_KEY};
 	try {
+		if(cityId) params.id = cityId
+		else {
+			let {lat, lon} = await location();
+			params.lat = lat;
+			params.lon = lon;
+	} 
 		const daily = await axios.get(DAILY_URL, { params });
 		const weekly = await axios.get(WEEKLY_URL, { params });
 		//Daily
